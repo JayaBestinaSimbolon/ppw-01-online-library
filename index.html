@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Online Library System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Header Aplikasi -->
+  <header class="header">
+    <div class="container">
+      <h1>Online Library System</h1>
+      <p class="subtitle">Sistem Katalog dan Peminjaman Buku Perpustakaan Sederhana</p>
+    </div>
+  </header>
+
+  <main class="container main-content">
+    <!-- Bagian 1: Pencarian Buku menggunakan HTTP GET -->
+    <section class="section search-section">
+      <h2>Pencarian Buku</h2>
+      <form id="searchForm" method="GET" action="index.html" class="search-form">
+        <div class="search-input-group">
+          <input 
+            type="text" 
+            id="searchInput" 
+            name="q" 
+            placeholder="Ketik judul buku yang ingin dicari..." 
+            autocomplete="off"
+          >
+          <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+      </form>
+      <div id="searchInfo" class="search-info"></div>
+    </section>
+
+    <!-- Bagian 2: Daftar Buku Koleksi Perpustakaan -->
+    <section class="section books-section">
+      <div class="section-header">
+        <h2>Daftar Buku</h2>
+        <span id="bookCountBadge" class="badge-count">0 Buku</span>
+      </div>
+      <div id="bookList" class="book-grid">
+        <!-- Kartu buku akan di-render secara dinamis oleh script.js -->
+      </div>
+    </section>
+
+    <!-- Bagian 3: Formulir Peminjaman Buku -->
+    <section class="section borrow-form-section">
+      <h2>Formulir Peminjaman Buku</h2>
+      <p class="form-description">Silakan isi data peminjam dan pilih buku yang berstatus <em>Available</em>.</p>
+      
+      <div id="formAlert" class="alert" style="display: none;"></div>
+
+      <form id="borrowForm" class="borrow-form" novalidate>
+        <div class="form-group">
+          <label for="borrowerName">Nama Peminjam <span class="required">*</span></label>
+          <input 
+            type="text" 
+            id="borrowerName" 
+            name="borrowerName" 
+            placeholder="Masukkan nama lengkap peminjam"
+            required
+          >
+          <small class="error-text" id="nameError"></small>
+        </div>
+
+        <div class="form-group">
+          <label for="borrowerNim">NIM (Nomor Induk Mahasiswa) <span class="required">*</span></label>
+          <input 
+            type="text" 
+            id="borrowerNim" 
+            name="borrowerNim" 
+            placeholder="Contoh: 12345678"
+            required
+          >
+          <small class="error-text" id="nimError"></small>
+        </div>
+
+        <div class="form-group">
+          <label for="bookSelect">Judul Buku <span class="required">*</span></label>
+          <select id="bookSelect" name="bookSelect" required>
+            <option value="">-- Pilih Buku yang Tersedia --</option>
+          </select>
+          <small class="error-text" id="bookError"></small>
+        </div>
+
+        <button type="submit" class="btn btn-success">Pinjam Buku</button>
+      </form>
+    </section>
+
+    <!-- Bagian 4: Daftar Buku yang Sedang Dipinjam -->
+    <section class="section borrowed-list-section">
+      <div class="section-header">
+        <h2>Daftar Buku yang Sedang Dipinjam</h2>
+        <span id="borrowedCountBadge" class="badge-count">0 Pinjaman</span>
+      </div>
+      <div id="borrowedContainer" class="borrowed-container">
+        <!-- Tabel atau pesan kosong akan di-render secara dinamis oleh script.js -->
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; Online Library System - Tugas PPW-01</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
