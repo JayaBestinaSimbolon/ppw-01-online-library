@@ -1,0 +1,21 @@
+{
+  "namaPerpustakaan": "Perpustakaan Digital IT Del",
+  "institusi": "Institut Teknologi Del",
+  "tagline": "Temukan Buku, Mulai Membaca",
+  "deskripsi": "Layanan katalog dan peminjaman buku digital terpadu untuk civitas akademika Institut Teknologi Del, mendukung pembelajaran mandiri dan riset teknologi.",
+  "lokasi": "Gedung Perpustakaan IT Del, Jl. Sisingamangaraja, Sitoluama, Laguboti, Toba, Sumatera Utara 22381",
+  "jamOperasional": "Senin - Jumat: 08.00 - 17.00 WIB | Sabtu: 08.00 - 13.00 WIB",
+  "kontak": {
+    "email": "perpustakaan@del.ac.id",
+    "telepon": "(0632) 331234"
+  },
+  "tahunAkademik": "2026/2027",
+  "kategoriTersedia": [
+    "Semua Kategori",
+    "Teknologi",
+    "Sains Data",
+    "Rekayasa Perangkat Lunak",
+    "Jaringan & Keamanan",
+    "Matematika"
+  ]
+}

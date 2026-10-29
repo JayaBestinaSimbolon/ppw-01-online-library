@@ -1,0 +1,82 @@
+[
+  {
+    "id": "BK001",
+    "judul": "Algoritma dan Pemrograman Modern dengan Python",
+    "penulis": "Rinaldi Munir",
+    "tahun": 2023,
+    "kategori": "Teknologi",
+    "deskripsi": "Panduan komprehensif konsep dasar algoritma, struktur kontrol, rekursi, hingga implementasi teknik pemecahan masalah komputasional menggunakan bahasa Python.",
+    "gambar": "assets/images/buku-1.svg",
+    "stok": 4
+  },
+  {
+    "id": "BK002",
+    "judul": "Dasar-Dasar Pemrograman Web: HTML5, CSS3, & JavaScript ES6+",
+    "penulis": "Budi Raharjo",
+    "tahun": 2024,
+    "kategori": "Teknologi",
+    "deskripsi": "Buku referensi lengkap untuk mempelajari arsitektur web decoupled, dynamic client-side rendering (CSR), manipulasi DOM modern, dan integrasi REST API.",
+    "gambar": "assets/images/buku-2.svg",
+    "stok": 3
+  },
+  {
+    "id": "BK003",
+    "judul": "Rekayasa Perangkat Lunak: Teori, Praktik, & Agile",
+    "penulis": "Rosa A. S. & M. Shalahuddin",
+    "tahun": 2022,
+    "kategori": "Rekayasa Perangkat Lunak",
+    "deskripsi": "Membahas siklus hidup pengembangan perangkat lunak (SDLC), pemodelan UML, metodologi Agile Scrum, serta pengujian perangkat lunak terstandarisasi.",
+    "gambar": "assets/images/buku-3.svg",
+    "stok": 2
+  },
+  {
+    "id": "BK004",
+    "judul": "Sistem Basis Data: Perancangan, Normalisasi, & NoSQL",
+    "penulis": "Fathansyah",
+    "tahun": 2023,
+    "kategori": "Sains Data",
+    "deskripsi": "Konsep arsitektur basis data relasional, pemodelan Entity-Relationship Diagram (ERD), normalisasi data, optimasi kueri SQL, dan pengenalan basis data dokumen.",
+    "gambar": "assets/images/buku-4.svg",
+    "stok": 5
+  },
+  {
+    "id": "BK005",
+    "judul": "Jaringan Komputer dan Keamanan Informasi Modern",
+    "penulis": "Iwan Sofana",
+    "tahun": 2024,
+    "kategori": "Jaringan & Keamanan",
+    "deskripsi": "Pembahasan model OSI, protokol TCP/IP, perutean jaringan, virtual private network (VPN), kriptografi terapan, serta mitigasi ancaman keamanan siber terkini.",
+    "gambar": "assets/images/buku-5.svg",
+    "stok": 1
+  },
+  {
+    "id": "BK006",
+    "judul": "Struktur Data Terapan dan Analisis Kompleksitas",
+    "penulis": "Abdul Kadir",
+    "tahun": 2022,
+    "kategori": "Teknologi",
+    "deskripsi": "Penjelasan mendalam struktur data stack, queue, linked list, tree, graph, serta metode analisis efisiensi asimtotik algoritma (Big-O notation).",
+    "gambar": "assets/images/buku-6.svg",
+    "stok": 3
+  },
+  {
+    "id": "BK007",
+    "judul": "Pengantar Kecerdasan Buatan dan Pembelajaran Mesin",
+    "penulis": "Suyanto",
+    "tahun": 2023,
+    "kategori": "Sains Data",
+    "deskripsi": "Prinsip dasar machine learning, algoritma klasifikasi, regresi, clustering, pengenalan deep learning, dan studi kasus analitika data di industri.",
+    "gambar": "assets/images/buku-7.svg",
+    "stok": 2
+  },
+  {
+    "id": "BK008",
+    "judul": "Matematika Diskrit untuk Ilmu Komputer",
+    "penulis": "Rinaldi Munir",
+    "tahun": 2021,
+    "kategori": "Matematika",
+    "deskripsi": "Landasan logika proposisional, teori himpunan, relasi dan fungsi, teori graf, pohon, serta kombinatorika yang mendasari ilmu komputasi.",
+    "gambar": "assets/images/buku-8.svg",
+    "stok": 0
+  }
+]

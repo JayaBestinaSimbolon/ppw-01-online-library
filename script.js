@@ -129,8 +129,14 @@ document.addEventListener("DOMContentLoaded", () => {
   if (searchQuery !== "") {
     searchInput.value = searchQuery;
     searchInfo.innerHTML = `
-      <span>Menampilkan hasil pencarian untuk: <strong>"${escapeHTML(searchQuery)}"</strong></span>
-      <a href="index.html" class="reset-link">Tampilkan Semua Buku</a>
+      <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 pt-2">
+        <span class="small text-muted">
+          Menampilkan hasil pencarian untuk: <strong class="text-dark">"${escapeHTML(searchQuery)}"</strong>
+        </span>
+        <a href="index.html" class="btn btn-sm btn-outline-secondary">
+          <i class="bi bi-x-circle me-1"></i>Tampilkan Semua Buku
+        </a>
+      </div>
     `;
   } else {
     searchInfo.innerHTML = "";
@@ -157,11 +163,13 @@ document.addEventListener("DOMContentLoaded", () => {
     // Jika tidak ada buku yang cocok dengan kata kunci
     if (filteredBooks.length === 0) {
       bookListContainer.innerHTML = `
-        <div class="empty-message" style="grid-column: 1 / -1;">
-          <p><strong>Buku tidak ditemukan</strong></p>
-          <p style="margin-top: 6px; font-size: 0.85rem; color: #64748b;">
-            Tidak ada buku dengan judul yang mengandung kata kunci "${escapeHTML(searchQuery)}".
-          </p>
+        <div class="col-12">
+          <div class="alert alert-warning text-center my-2 p-4">
+            <p class="fw-bold mb-1"><i class="bi bi-exclamation-triangle me-1"></i>Buku tidak ditemukan</p>
+            <p class="mb-0 small text-muted">
+              Tidak ada buku dengan judul yang mengandung kata kunci "${escapeHTML(searchQuery)}".
+            </p>
+          </div>
         </div>
       `;
       return;
@@ -169,18 +177,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Render kartu buku
     bookListContainer.innerHTML = filteredBooks.map(book => {
-      const statusClass = book.status === "Available" ? "status-available" : "status-borrowed";
+      const isAvailable = book.status === "Available";
+      const statusBadge = isAvailable
+        ? `<span class="badge bg-success-subtle text-success border border-success-subtle px-2 py-1"><i class="bi bi-check-circle me-1"></i>Available</span>`
+        : `<span class="badge bg-danger-subtle text-danger border border-danger-subtle px-2 py-1"><i class="bi bi-hourglass-split me-1"></i>Borrowed</span>`;
+
       return `
-        <article class="book-card">
-          <div class="book-card-header">
-            <h3 class="book-title">${escapeHTML(book.title)}</h3>
-            <span class="status-badge ${statusClass}">${book.status}</span>
-          </div>
-          <div class="book-card-body">
-            <p><strong>Penulis:</strong> ${escapeHTML(book.author)}</p>
-            <p><strong>Tahun Terbit:</strong> ${book.year}</p>
-          </div>
-        </article>
+        <div class="col">
+          <article class="card h-100 shadow-sm border book-card">
+            <div class="card-body d-flex flex-column">
+              <div class="d-flex justify-content-between align-items-start gap-2 mb-3">
+                <h3 class="h6 card-title fw-bold mb-0 text-dark">${escapeHTML(book.title)}</h3>
+                ${statusBadge}
+              </div>
+              <div class="mt-auto pt-2 border-top small text-muted">
+                <p class="mb-1"><strong class="text-secondary">Penulis:</strong> ${escapeHTML(book.author)}</p>
+                <p class="mb-0"><strong class="text-secondary">Tahun Terbit:</strong> ${book.year}</p>
+              </div>
+            </div>
+          </article>
+        </div>
       `;
     }).join("");
   }
@@ -223,8 +239,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (borrowedList.length === 0) {
       borrowedContainer.innerHTML = `
-        <div class="empty-message">
-          <p>Belum ada buku yang dipinjam</p>
+        <div class="p-4 text-center text-muted">
+          <i class="bi bi-inbox fs-2 d-block mb-2 text-secondary"></i>
+          <p class="mb-0">Belum ada buku yang sedang dipinjam</p>
         </div>
       `;
       return;
@@ -232,33 +249,33 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let rowsHTML = borrowedList.map((item, index) => `
       <tr>
-        <td>${index + 1}</td>
+        <td class="text-center fw-semibold text-secondary">${index + 1}</td>
         <td><strong>${escapeHTML(item.borrowerName)}</strong></td>
-        <td>${escapeHTML(item.borrowerNim)}</td>
+        <td><span class="badge bg-light text-dark border font-monospace">${escapeHTML(item.borrowerNim)}</span></td>
         <td>${escapeHTML(item.bookTitle)}</td>
-        <td>
+        <td class="text-center">
           <button 
             type="button" 
-            class="btn btn-return" 
+            class="btn btn-sm btn-outline-danger btn-return d-inline-flex align-items-center gap-1" 
             data-index="${index}"
             data-title="${escapeHTML(item.bookTitle)}"
           >
-            Return Book
+            <i class="bi bi-arrow-counterclockwise"></i> Return Book
           </button>
         </td>
       </tr>
     `).join("");
 
     borrowedContainer.innerHTML = `
-      <div class="borrowed-table-wrapper">
-        <table class="borrowed-table">
-          <thead>
+      <div class="table-responsive">
+        <table class="table table-hover table-striped align-middle mb-0">
+          <thead class="table-light">
             <tr>
-              <th style="width: 50px;">No</th>
+              <th style="width: 50px;" class="text-center">No</th>
               <th>Nama Peminjam</th>
               <th>NIM</th>
               <th>Judul Buku</th>
-              <th style="width: 130px;">Aksi</th>
+              <th style="width: 150px;" class="text-center">Aksi</th>
             </tr>
           </thead>
           <tbody>
@@ -376,21 +393,21 @@ document.addEventListener("DOMContentLoaded", () => {
   // 10. FUNGSI UTILITAS BANTUAN
   // ===========================================================================
   function showError(inputElement, errorElement, message) {
-    inputElement.classList.add("input-error");
+    inputElement.classList.add("is-invalid");
     errorElement.textContent = message;
   }
 
   function clearErrors() {
-    borrowerNameInput.classList.remove("input-error");
-    borrowerNimInput.classList.remove("input-error");
-    bookSelect.classList.remove("input-error");
+    borrowerNameInput.classList.remove("is-invalid");
+    borrowerNimInput.classList.remove("is-invalid");
+    bookSelect.classList.remove("is-invalid");
     nameError.textContent = "";
     nimError.textContent = "";
     bookError.textContent = "";
   }
 
   function showFormAlert(message, type) {
-    formAlert.className = `alert alert-${type}`;
+    formAlert.className = `alert alert-${type} shadow-sm`;
     formAlert.textContent = message;
     formAlert.style.display = "block";
 
